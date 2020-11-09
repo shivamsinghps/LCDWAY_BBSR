@@ -6,9 +6,10 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Hidden from '@material-ui/core/Hidden';
-import AboutSVG from '../images/Astronaut-01.svg'
+import Dialog from '@material-ui/core/Dialog';
+import Repair from './Reapir'
+import About from './About'
 
 const useStyles = makeStyles({
   card: {
@@ -25,11 +26,12 @@ const useStyles = makeStyles({
 
 export default function FeaturedPost(props) {
   const classes = useStyles();
+  const [open,setOpen] = React.useState(false)
   const { post } = props;
 
   return (
     <Grid item xs={12} md={6}>
-      <CardActionArea component="a" href="#">
+      <CardActionArea component="a" onClick={()=>setOpen(true)}>
         <Card className={classes.card}>
           <div className={classes.cardDetails}>
             <CardContent>
@@ -46,6 +48,15 @@ export default function FeaturedPost(props) {
           </Hidden>
         </Card>
       </CardActionArea>
+      <Dialog
+        maxWidth='lg'
+        open={open}
+        onClose={()=>setOpen(false)}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        {post.title === 'Book Repair' ? <Repair /> : <About/>}
+      </Dialog>
     </Grid>
   );
 }
