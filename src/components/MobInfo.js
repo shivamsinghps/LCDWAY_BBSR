@@ -5,8 +5,17 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { Button } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
+
 
 const useStyles = makeStyles((theme) => ({
+    UserDetailform:{
+      marginLeft:5,
+      width: '15ch',
+      display:'inline',
+      
+
+    },
     formControl: {
       margin: theme.spacing(3),
       minWidth: 220,
@@ -21,13 +30,14 @@ const useStyles = makeStyles((theme) => ({
         marginLeft:theme.spacing(5)
     },
     userInfo:{
+      textAlign:'center',
       margin:10,
       borderWidth:2,
       borderStyle:'solid',
       borderRadius:5,
       borderColor:'#e8e8e8',
       width:'98%',
-      height:'10vh'
+      height:'20vh'
     }
   }));
 export default function MobInfo() {
@@ -91,6 +101,15 @@ export default function MobInfo() {
             {userInfo?(
               <div className={classes.userInfo}>
                 <h4 style={{padding:10}}>Enter Your Details</h4>
+                <form className={classes.UserDetailform} noValidate autoComplete="off">
+                <TextField  label="Name" variant="outlined" />
+                <TextField  label="PickUp Address" variant="outlined" />
+                <TextField  label="Contact No." variant="outlined" />
+                <TextField  label="Email(Optional)" variant="outlined" />
+                <Button variant="contained" color="primary" style={{display:"block",marginTop:5,marginLeft:'47%'}}>
+                  Book Repair
+            </Button>
+              </form>
               </div> 
               ):null}
         </div>
